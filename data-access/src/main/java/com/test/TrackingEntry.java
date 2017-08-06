@@ -5,14 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
-@Entity // This tells Hibernate to make a table out of this class
-public class User {
+@Entity
+public class TrackingEntry {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(unique = true)
+	@NotNull
+	@Column(nullable = false, unique = true)
 	private String name;
 
 	public Long getId() {
@@ -47,10 +50,10 @@ public class User {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof User)) {
+		if (!(obj instanceof TrackingEntry)) {
 			return false;
 		}
-		User other = (User) obj;
+		TrackingEntry other = (TrackingEntry) obj;
 		if (name == null) {
 			if (other.name != null) {
 				return false;
@@ -63,7 +66,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + "]";
+		return "TrackingEntry [id=" + id + ", name=" + name + "]";
 	}
 
 }
