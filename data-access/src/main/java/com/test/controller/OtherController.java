@@ -44,6 +44,8 @@ public class OtherController {
 		Map<String, Object> params = new HashMap<>();
 		params.put("users", userRepository.findAll());
 		params.put("recipes", recipeRepository.findAll());
+		params.put("ratings",  ratingRepository.findAll());
+		params.put("ingredients", ingredientRepository.findAll());
 		return new ModelAndView("addStuff", params);
 	}
 }

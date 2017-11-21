@@ -31,11 +31,46 @@
             </tr>        
             <#list recipes as recipe>
                 <tr>
-                    <td>${recipe.id}</td> 
-                    <td>${recipe.book}</td>
-                    <td>${recipe.author}</td> 
+                    <td><b>${recipe.id}</b></td> 
+                    <td><b>${recipe.book}</b></td>
+                    <td><b>${recipe.author}</b></td> 
+                </tr>
+                <#list recipe.ingredients as ingredient>
+                <tr>
+                    <td>${ingredient.amount}</td> 
+                    <td>${ingredient.unit}</td>
+                    <td>${ingredient.item}</td> 
+                </tr>
+                </#list>
+            </#list>        
+        </table>        
+        
+         <table>
+            <tr>
+                <th>value</th>  
+                <th>name</th>
+            </tr>        
+            <#list ratings as rating>
+                <tr>
+                    <td>${rating.value}</td>
+                    <td>${rating.trackingEntry.name}</td>
                 </tr>
             </#list>        
-        </table>                 
+        </table>      
+        
+       <table>
+            <tr>
+                <th>amount</th>  
+                <th>unit</th>
+                <th>item</th>  
+            </tr>        
+            <#list ingredients as ingredient>
+                <tr>
+                    <td>${ingredient.amount}</td> 
+                    <td>${ingredient.unit}</td>
+                    <td>${ingredient.item}</td> 
+                </tr>
+            </#list>        
+        </table>           
     </body>
 </html>
