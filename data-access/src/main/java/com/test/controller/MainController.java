@@ -1,4 +1,4 @@
-package com.test;
+package com.test.controller;
 
 import java.util.Collections;
 
@@ -9,9 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller // This means that this class is a Controller
-@RequestMapping(path = "/demo") // This means URL's start with /demo (after
-								// Application path)
+import com.test.model.Ingredient;
+import com.test.model.Rating;
+import com.test.model.Recipe;
+import com.test.model.TrackingEntry;
+import com.test.model.User;
+import com.test.model.data.IngredientRepository;
+import com.test.model.data.RatingRepository;
+import com.test.model.data.RecipeRepository;
+import com.test.model.data.TrackingEntryRepository;
+import com.test.model.data.UserRepository;
+
+@Controller 
+@RequestMapping(path = "/demo") // This means URL's start with /demo (after	Application path)
 public class MainController {
 	@Autowired 
 	private UserRepository userRepository;
@@ -30,9 +40,6 @@ public class MainController {
 
 	@GetMapping(path = "/add") // Map ONLY GET Requests
 	public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String title, @RequestParam String item, @RequestParam String rating) {
-		// @ResponseBody means the returned String is the response, not a view
-		// name
-		// @RequestParam means it is a parameter from the GET or POST request
 
 		User n = new User();
 		n.setName(name);
@@ -68,5 +75,10 @@ public class MainController {
 	public @ResponseBody Iterable<User> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
+	}
+	
+	@GetMapping(path = "/user")
+	public @ResponseBody User getUser(@RequestParam String name) {
+		return userRepository.findByName(name);
 	}
 }

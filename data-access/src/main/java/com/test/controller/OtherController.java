@@ -1,4 +1,4 @@
-package com.test;
+package com.test.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
-@RequestMapping(path = "/webapp")
+import com.test.model.data.IngredientRepository;
+import com.test.model.data.RatingRepository;
+import com.test.model.data.RecipeRepository;
+import com.test.model.data.TrackingEntryRepository;
+import com.test.model.data.UserRepository;
+
+//@Controller
+//@RequestMapping(path = "/webapp")
 public class OtherController {
 
 	@Autowired 
