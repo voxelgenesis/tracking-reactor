@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <a href="addStuff">Show information</a>
+        <a href="info">Show information</a>
+        <a href="queries">Queries</a>
     </body>
 </html>

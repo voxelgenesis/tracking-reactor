@@ -23,6 +23,8 @@
             </#list>       
         </table>     
         
+        <h2>List of recipes with ingredients</h2>
+        
         <table>
             <tr>
                 <th>Id</th>  
@@ -45,6 +47,8 @@
             </#list>        
         </table>        
         
+        <h2>List of tracking entries</h2>
+        
          <table>
             <tr>
                 <th>value</th>  
@@ -57,6 +61,8 @@
                 </tr>
             </#list>        
         </table>      
+        
+        <h2>List of ingredients</h2>
         
        <table>
             <tr>

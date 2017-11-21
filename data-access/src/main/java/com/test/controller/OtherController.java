@@ -39,13 +39,23 @@ public class OtherController {
 		return "index";
 	}
 	
-	@RequestMapping(path = "/addStuff")
-	public ModelAndView addStuff() {
+	@RequestMapping(path = "/info")
+	public ModelAndView info() {
 		Map<String, Object> params = new HashMap<>();
 		params.put("users", userRepository.findAll());
 		params.put("recipes", recipeRepository.findAll());
 		params.put("ratings",  ratingRepository.findAll());
 		params.put("ingredients", ingredientRepository.findAll());
-		return new ModelAndView("addStuff", params);
+		return new ModelAndView("info", params);
+	}
+	
+	@RequestMapping(path = "queries")
+	public ModelAndView queries() {
+		Map<String, Object> params = new HashMap<>();
+		params.put("ingredientscount", ingredientRepository.countByItem("onion"));
+		params.put("ingredientsunit", ingredientRepository.findDistinctByItem("onion"));
+		params.put("ingredientsthree", ingredientRepository.findFirst3ByItem("onion"));
+		params.put("ingredientsall", ingredientRepository.findAll());
+		return new ModelAndView("queries", params);
 	}
 }

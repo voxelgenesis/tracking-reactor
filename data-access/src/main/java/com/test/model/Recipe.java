@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 public class Recipe {
@@ -26,7 +28,7 @@ public class Recipe {
 
 	private String book;
 
-	
+	@JsonManagedReference // Necessary to prevent infinite recursion when marshalling out a response.
 	@OneToMany(mappedBy = "recipe", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER )
 	private Set<Ingredient> ingredients;
 

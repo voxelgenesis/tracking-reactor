@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -129,10 +130,16 @@ public class MainController {
 	}
 	
 	@GetMapping(path = "/ingredient")
-	public Collection<Ingredient> getIngredient(@RequestParam String item) {
-		return ingredientRepository.findByItem(item);
+	public Collection<Ingredient> getIngredientByItem(@RequestParam(required = false) String item, @RequestParam(required = false) String unit) {
+		if (StringUtils.hasText(item)) {
+			return ingredientRepository.findByItem(item);
+		} else if (StringUtils.hasText(unit)) {
+			return ingredientRepository.findByUnit(unit);
+		}
+		
+		return (Collection<Ingredient>) ingredientRepository.findAll();
 	}
-	
+
 	@GetMapping(path = "/ingredients")
 	public Iterable<Ingredient> getIngredients() {
 		return ingredientRepository.findAll();
@@ -146,5 +153,10 @@ public class MainController {
 	@GetMapping(path = "/ratings")
 	public Iterable<Rating> getRatings() {
 		return ratingRepository.findAll();
+	}
+	
+	@GetMapping(path = "/trackingEntries")
+	public Iterable<TrackingEntry> getTrackingEntries() {
+		return trackingRepository.findAll();
 	}
 }

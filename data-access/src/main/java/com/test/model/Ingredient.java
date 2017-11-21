@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Ingredient {
 
@@ -14,6 +16,7 @@ public class Ingredient {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@JsonBackReference // Necessary to prevent infinite recursion when marshalling out a response.
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private Recipe recipe;
 
