@@ -15,8 +15,8 @@ import com.test.model.data.RecipeRepository;
 import com.test.model.data.TrackingEntryRepository;
 import com.test.model.data.UserRepository;
 
-//@Controller
-//@RequestMapping(path = "/webapp")
+@Controller
+@RequestMapping(path = "/webapp")
 public class OtherController {
 
 	@Autowired 
@@ -43,6 +43,7 @@ public class OtherController {
 	public ModelAndView addStuff() {
 		Map<String, Object> params = new HashMap<>();
 		params.put("users", userRepository.findAll());
+		params.put("recipes", recipeRepository.findAll());
 		return new ModelAndView("addStuff", params);
 	}
 }

@@ -20,7 +20,22 @@
                     <td>${user.id}</td> 
                     <td>${user.name}</td> 
                 </tr>
+            </#list>       
+        </table>     
+        
+        <table>
+            <tr>
+                <th>Id</th>  
+                <th>Book</th>
+                <th>Author</th>  
+            </tr>        
+            <#list recipes as recipe>
+                <tr>
+                    <td>${recipe.id}</td> 
+                    <td>${recipe.book}</td>
+                    <td>${recipe.author}</td> 
+                </tr>
             </#list>        
-        </table>                
+        </table>                 
     </body>
 </html>

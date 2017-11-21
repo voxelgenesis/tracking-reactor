@@ -1,5 +1,6 @@
 package com.test.controller;
 
+import java.util.Collection;
 import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,5 +81,15 @@ public class MainController {
 	@GetMapping(path = "/user")
 	public @ResponseBody User getUser(@RequestParam String name) {
 		return userRepository.findByName(name);
+	}
+	
+	@GetMapping(path = "/ingredient")
+	public @ResponseBody Collection<Ingredient> getIngredient(@RequestParam String item) {
+		return ingredientRepository.findByItem(item);
+	}
+	
+	@GetMapping(path = "/ingredients")
+	public @ResponseBody Iterable<Ingredient> getIngredients() {
+		return ingredientRepository.findAll();
 	}
 }
